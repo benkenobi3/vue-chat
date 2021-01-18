@@ -1,6 +1,7 @@
 <template>
   <div>
-     <b-container>
+
+    <b-container class="chat-page">
 
       <b-row class="justify-content-center">
         
@@ -13,7 +14,7 @@
 
     </b-container>
 
-</div>
+  </div>
 </template>
 
 <script>
@@ -23,7 +24,7 @@ export default {
 </script>
 
 <style>
- div {
+ .chat-page {
     background: linear-gradient(#E0FFF1 50%, #ffffff 50%);
     height: 100vh;
     margin-top: 0;
