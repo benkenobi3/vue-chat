@@ -1,6 +1,6 @@
 <template>
   <div>
-    
+    <h1>Hello Navalny</h1>
   </div>
 </template>
 
@@ -11,5 +11,5 @@ export default {
 </script>
 
 <style>
-
+  
 </style>
