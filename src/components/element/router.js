@@ -4,6 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import Main from '../pages/Main'
+import Chat from '../pages/Chat'
 
 const routes = [
     {
@@ -11,7 +12,14 @@ const routes = [
       name: 'Главная',
       component: Main
     },
+    {
+      path: '/chat',
+      name: 'Чат',
+      component: Chat
+    },
+  
 ]
+
   
 export default new Router({
     mode: 'history',

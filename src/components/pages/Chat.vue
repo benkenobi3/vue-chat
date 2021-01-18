@@ -6,8 +6,7 @@
         
         <b-col cols="12">
           
-          
-        <b-button>Начать чат!</b-button>
+        <b-button>Начать!</b-button>
         </b-col>
 
       </b-row>
