@@ -6,7 +6,8 @@
       <b-row class="justify-content-center">
         
         <b-col cols="12">
-          <h1>Hello Navalny</h1>
+          
+          
         <b-button>Начать чат!</b-button>
         </b-col>
 

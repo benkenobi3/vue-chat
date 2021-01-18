@@ -2,7 +2,7 @@
 dist
 node_modules
 npm-debug
-
+custom
 
 # local env files
 .env.local

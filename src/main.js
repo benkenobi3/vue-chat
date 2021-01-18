@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import Axios from 'axios'
 // import store from './store'
-import router from './components/elements/router'
+import router from './components/element/router.js'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
