@@ -16,11 +16,30 @@ export default {
 <style>
 
   #app {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+  }
+
+  @font-face {
+    font-family: "Gilroy";
+    src: local("gilroy-medium"),
+      url(/fonts/gilroy-medium.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 200;
+  }
+  @font-face {
+    font-family: "Gilroy";
+    src: local('gilroy-regular'),
+      url(/fonts/gilroy-regular.ttf) format("truetype");
+      font-weight: 100;
+  }
+  @font-face {
+    font-family: "Gilroy";
+    src: local("gilroy-semibold"),
+      url(/fonts/gilroy-semibold.ttf) format("truetype");
+    font-weight: 600;
   }
 
   .vh-100 {

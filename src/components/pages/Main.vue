@@ -2,7 +2,7 @@
   <div>
     <b-container fluid class ="main-page vh-100">
       <b-row align-v="center" align-h="center" class="vh-100">
-        <b-col sm="4">
+        <b-col md="4">
           
           <b-img class="logo" center fluid :src="require('../custom/Group_34.png')"></b-img>
 
@@ -13,7 +13,7 @@
                   <b-form-input 
                   v-model="name" 
                   size="sm"
-                  placeholder="Введите имя или оставьте поле пустым.">
+                  placeholder="Введите имя">
                   </b-form-input>
                 </b-col>               
               </b-card-text>
@@ -22,7 +22,7 @@
                 <h6 class="amount-of-active-users">112</h6> 
               </b-card-text>
 
-              <b-button href="/chat" variant="success">Начать чат!</b-button>
+              <b-button href="/chat" variant="outline-success">Начать чат!</b-button>
 
           </b-card>
 
@@ -40,7 +40,15 @@ export default {
 
 <style>
   .main-page {
-    background: linear-gradient(#E0FFF1 50%, #ffffff 50%);
+    background: linear-gradient(#E0FFF1, #DDEFC6);
+    font-family: Gilroy;
+    font-weight: 600;
+  }
+
+  .amount-of-active-users {
+    color: #2ECC71;
+    font-family: "Gilroy";
+    font-weight: 200;
   }
 
   .logo {
@@ -51,6 +59,8 @@ export default {
     margin-top: 2vh;
     width: 22vw;
     filter: drop-shadow(0.5vw 0.5vh 0.5rem #EBEBEB);
+    font-family: "Gilroy";
+    font-weight: 100;
   }
 
 </style>
