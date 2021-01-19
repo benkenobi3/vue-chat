@@ -37,12 +37,12 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
+
 body{
   text-rendering: optimizeLegibility;
 }
  .main-page {
-    background:linear-gradient(#E0FFF1 50%, #ffffff 50%);
+    background: linear-gradient(#E0FFF1, #DDEFC6);
   }
 .icon{
   width:50px;
@@ -136,8 +136,6 @@ animation: fadeIn 1s ease-in;
 }
 
 
-
-=======
  .chat-page {
     background:linear-gradient(#E0FFF1, #DDEFC6);
   }
@@ -172,7 +170,6 @@ animation: fadeIn 1s ease-in;
     top: 0px;
     border-radius: 0px;
   }
->>>>>>> 82588a16683cbdf3d8b143463c402a1c22f82fcd
 
 
   .chat-bubble{
