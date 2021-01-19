@@ -1,4 +1,5 @@
 <template>
+
   <div>
     <b-container fluid class ="main-page vh-100">
       <div class="row no-gutters">
@@ -7,9 +8,22 @@
             <div class="logotext-tray">
               <h class="logo-text-chat">poly chat</h>
             </div>
-
+            <form method="post" action="/////НАЧАТЬ НОВЫЙ ЧАТ!!!!">
+            <button class="new-chat-reset" type="reset">Найти нового собеседника</button>
+            </form>
+           <button class="exit-button" href="/" variant="success">Выйти</button>
           
 
+            <div class="chat-box-tray">
+               
+                 <div class="input-wrapper">
+                   <form method="post" action="/ОТПРАВИТЬ СООБЩЕНИЕ!!//">
+                   <input type="text" placeholder="Напишите сообщение...">
+                   <input class="icon" type="submit" name="send" value=">" >
+                   </form>
+                 </div>
+               
+            </div>
         </div>
       </div>
     </b-container>
@@ -23,10 +37,18 @@ export default {
 </script>
 
 <style>
+body{
+  text-rendering: optimizeLegibility;
+}
  .main-page {
     background:linear-gradient(#E0FFF1 50%, #ffffff 50%);
   }
-
+.icon{
+  width:50px;
+  height:50px;
+  border-radius:25px;
+  background:#2ECC71;
+}
 .chat{
 height: 628px;
 width: 714px;
@@ -34,10 +56,17 @@ margin-top: 4vh;
 background:#F3F3F3;
 color:#fff;
   }
-
+.chat-box-tray{
+ height: 68px;
+width: 714px;
+border-radius: 0px;
+position:absolute;
+bottom:68px;
+ background:#FAFAFA;
+}
 
 .logo-text-chat{
-  font-family: Gilroy;
+  font-family:  'IBM Plex Sans', sans-serif;
 font-size: 20px;
 font-style: normal;
 font-weight: 700;
@@ -57,6 +86,41 @@ left: 0px;
 top: 0px;
 border-radius: 0px;
 
+}
+.new-chat-reset{
+  height: 50px;
+width: 300px;
+left: 500px;
+position: absolute;;
+bottom: 175px;
+border-radius: 4px;
+background:#2ECC71;
+color:#F3F3F3;
+border: 2px solid #F3F3F3;
+}
+
+.exit-button{
+  height: 50px;
+width: 90px;
+left: 820px;
+position: absolute;;
+bottom: 175px;
+border-radius: 4px;
+background:#BBBBBB;
+color:#F3F3F3;
+border: 2px solid #F3F3F3;
+
+}
+.message-box{
+ background:#F3F3F3;
+ padding:10px 30px;
+}
+
+input{
+  border:none;
+  padding: 10px 40px;
+  border-radius: 40px;
+  width:70%;
 }
 
 
