@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    <b-container fluid class ="main-page vh-100">
+    <b-container fluid class ="chat-page vh-100">
       <div class="row no-gutters">
         <div class="chat mx-auto">
          
@@ -37,6 +37,7 @@ export default {
 </script>
 
 <style>
+<<<<<<< HEAD
 body{
   text-rendering: optimizeLegibility;
 }
@@ -136,15 +137,51 @@ animation: fadeIn 1s ease-in;
 
 
 
-
-
-  .logo {
-    width: 10vw;
+=======
+ .chat-page {
+    background:linear-gradient(#E0FFF1, #DDEFC6);
   }
 
-  .welcome-card {
-    margin-top: 2vh;
-    width: 22vw;
-    filter: drop-shadow(0.5vw 0.5vh 0.5rem #EBEBEB);
+  .chat {
+    height: 628px;
+    width: 714px;
+    margin-top: 4vh;
+    background:#F3F3F3;
+    color:#fff;
+    }
+
+
+  .logo-text-chat{
+    font-family: Gilroy;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    float:left;
+    margin:10px;
+    color: #1C1C1C;
   }
+
+  .logotext-tray{
+    background:#FAFAFA;
+    height: 30px;
+    width: 714px;
+    left: 0px;
+    top: 0px;
+    border-radius: 0px;
+  }
+>>>>>>> 82588a16683cbdf3d8b143463c402a1c22f82fcd
+
+
+  .chat-bubble{
+    padding: 10px 14px;
+    background: #eee;
+    margin: 10px 30px;
+    border-radius:9px;
+    position:relative;
+    animation: fadeIn 1s ease-in;
+  }
+
 </style>
