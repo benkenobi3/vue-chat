@@ -19,6 +19,11 @@ new Vue({
 
   // store, может пригодиться
   router,
+  // methods: {
+  //   changeColor (){
+  //     this.blyat="я не понимаю как это писать"
+  //   }
+  // }
 
   render: h => h(App),
 
