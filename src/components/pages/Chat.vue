@@ -3,11 +3,10 @@
     <b-container fluid class="chat-page" no-gutters>
       <b-row align-v="center" align-h="center" class="vh-100" no-gutters>
         <b-col cols="6" class="chat-window" style="padding: 0">
-
           <b-container fluid no-gutters style="padding: 0">
             <b-row no-gutters class="logo-text-tray">
               <b-col sm="12">
-                  <h5 class="logo-text-chat">poly chat</h5>
+                <h5 class="logo-text-chat">poly chat</h5>
               </b-col>
             </b-row>
 
@@ -19,56 +18,27 @@
                 <b-button class="exit-button">Выйти</b-button>
               </b-col>
             </b-row> -->
-
           </b-container>
-          
-          <b-container>
-          <b-row align-v="center" align-h="center">
-            <b-col cols="12" class="chat-box-tray">
-              <div>
-                <b-form-input
-                v-model="text"
-                id="input-message"
-                placeholder="Напишите сообщение..."
-                >
-                </b-form-input>
-                <b-img class="arrow" :src="require('../../assets/arrow.png') "> </b-img>
-              </div>
-              
-            </b-col>
-          </b-row>
-        </b-container>
-        
-        </b-col>
 
+          <b-container>
+            <b-row align-v="center" align-h="center">
+              <b-col cols="12" class="chat-box-tray">
+                <div>
+                  <b-form-input
+                    v-model="text"
+                    id="input-message"
+                    placeholder="Напишите сообщение..."
+                  >
+                  </b-form-input>
+                </div>
+                  <!-- <b-img class="arrow" :src="require('../../assets/arrow.svg')"></b-img> -->
+              </b-col>
+            </b-row>
+          </b-container>
+        </b-col>
       </b-row>
     </b-container>
   </div>
-  <!-- <b-container fluid class="chat-page vh-100">
-      <div class="row no-gutters">
-        <div class="chat mx-auto">
-              
-          <div class="logotext-tray">
-            <h class="logo-text-chat">poly chat</h>
-          </div>
-          <form method="post" action="/////НАЧАТЬ НОВЫЙ ЧАТ!!!!">
-            <button class="new-chat-reset" type="reset">
-              Найти нового собеседника
-            </button>
-          </form>
-          <button class="exit-button" href="/" variant="success">Выйти</button>
-
-          <div class="chat-box-tray">
-            <div class="input-wrapper">
-              <form method="post" action="/ОТПРАВИТЬ СООБЩЕНИЕ!!//">
-                <input type="text" placeholder="Напишите сообщение..." />
-                <input class="icon" type="submit" name="send" value="Отправить" />
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </b-container> -->
 </template>
 
 
@@ -105,7 +75,7 @@ export default {};
 .chat-box-tray {
   height: 10vh;
   margin-top: 56vh;
-  background: #FAFAFA;
+  background: #fafafa;
   border-radius: 1vh;
 }
 
@@ -114,6 +84,7 @@ export default {};
   font-weight: 600;
   font-style: normal;
   margin-left: 1vw;
+  margin-top: 1vh;
   text-align: left;
   color: #1c1c1c;
 }
@@ -121,7 +92,6 @@ export default {};
 .logo-text-tray {
   background: #fafafa;
   margin: 0px !important;
-  border-radius: 0px;
   min-width: 100%;
   max-width: 100%;
   border-radius: 1vh;
@@ -133,19 +103,26 @@ export default {};
   margin-left: 2vw;
   margin-top: 2vh;
   width: 70%;
-  background-color: #F3F3F3 !important;
+  background-color: #f3f3f3 !important;
+  outline: none !important;
+  border-width: 0 0 2px;
+  border-color: #bbbbbb;
+  box-shadow: none;
+  border-radius: 1vh;
 }
 
 #input-message::placeholder {
-  color:#BBBBBB !important; 
+  color: #bbbbbb !important;
   font-style: italic !important;
+  font-family: "Gilroy";
+  font-weight: 200;
 }
 
 .arrow {
   width: 2vw;
   margin-left: 28vw;
+  margin-top: 0;
 }
-
 
 /*
 .chat-bubble {
@@ -156,5 +133,4 @@ export default {};
   position: relative;
   animation: fadeIn 1s ease-in;
 } */
-
 </style>
