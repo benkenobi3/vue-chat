@@ -4,7 +4,7 @@
       <b-row align-v="center" align-h="center" class="vh-100">
         <b-col md="4">
           
-          <b-img class="logo" center fluid :src="require('../custom/Group_34.png')"></b-img>
+          <b-img class="logo" center fluid :src="require('../../assets/Group_34.png')"></b-img>
 
           <b-card class="welcome-card mx-auto" title="poly chat">
 
