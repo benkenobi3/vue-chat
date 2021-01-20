@@ -24,7 +24,7 @@ export default {
     position: absolute;
     width: 3vw;
     height: 2vh;
-    opacity: 00%;
+    opacity: 0%;
     font-family: "Gilroy";
     font-weight: 200;
     color: black;

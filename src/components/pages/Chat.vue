@@ -3,25 +3,44 @@
     <b-container fluid class="chat-page" no-gutters>
       <b-row align-v="center" align-h="center" class="vh-100" no-gutters>
         <b-col cols="6" class="chat-window" style="padding: 0">
+
           <b-container fluid no-gutters style="padding: 0">
             <b-row no-gutters class="logo-text-tray">
               <b-col sm="12">
-                  <h6 class="logo-text-chat">poly chat</h6>
+                  <h5 class="logo-text-chat">poly chat</h5>
               </b-col>
             </b-row>
-            <b-row>
+
+            <!-- <b-row>
               <b-col>
-                <b-button>Найти нового собеседника</b-button>
+                <b-button class="new-chat-reset">Найти нового собеседника</b-button>
               </b-col>
               <b-col>
-                <b-button>Выйти</b-button>
+                <b-button class="exit-button">Выйти</b-button>
               </b-col>
-            </b-row>
+            </b-row> -->
+
           </b-container>
+          
+          <b-container>
+          <b-row align-v="center" align-h="center">
+            <b-col cols="12" class="chat-box-tray">
+              <div>
+                <b-form-input
+                v-model="text"
+                id="input-message"
+                placeholder="Напишите сообщение..."
+                >
+                </b-form-input>
+                <b-img class="arrow" :src="require('../../assets/arrow.png') "> </b-img>
+              </div>
+              
+            </b-col>
+          </b-row>
+        </b-container>
+        
         </b-col>
-        <b-row class="chat-box-tray">
-          <b-col> </b-col>
-        </b-row>
+
       </b-row>
     </b-container>
   </div>
@@ -60,18 +79,16 @@ export default {};
 </script>
 
 <style>
-/* .icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  background: #2ecc71;
-} */
+.chat-page {
+  background: linear-gradient(#e0fff1, #ddefc6);
+}
+
 .chat-window {
   height: 70vh;
   margin-top: 15vh;
   margin-bottom: 15vh;
   padding: 0;
-
+  border-radius: 1vh;
   background: #f3f3f3;
   color: #fff;
   box-shadow: 0vw 0vw 1vh #bbbbbb;
@@ -87,14 +104,16 @@ export default {};
 
 .chat-box-tray {
   height: 10vh;
-  width: 55vw;
-  background: #fafafa;
+  margin-top: 56vh;
+  background: #FAFAFA;
+  border-radius: 1vh;
 }
 
 .logo-text-chat {
   font-family: "Gilroy";
   font-weight: 600;
   font-style: normal;
+  margin-left: 1vw;
   text-align: left;
   color: #1c1c1c;
 }
@@ -105,46 +124,30 @@ export default {};
   border-radius: 0px;
   min-width: 100%;
   max-width: 100%;
+  border-radius: 1vh;
 }
 
-.new-chat-reset {
-  /* тут творится какой-то пиздец */
-  height: 5vh;
-  width: 20vw;
-  /* margin-top: 30vh;
-  margin-right: 15vw; */
-  border-radius: 4px;
-  font-family: "Gilroy";
-  font-weight: 200;
-  background: #2ecc71 !important;
-  color: #f3f3f3 !important;
-  border: 1rem #2ecc71 !important;
-}
-
-.exit-button {
-  height: 5vh;
-  width: 15vw;
-  margin-top: 0vh;
-  margin-right: 0vw;
-  font-family: "Gilroy";
-  font-weight: 200;
-  background: #bbbbbb;
-  color: #f3f3f3;
-  border: 2px solid #f3f3f3;
-}
-/*
-.message-box {
-  background: #f3f3f3;
-  padding: 10px 30px;
-}
-
-input {
-  border: none;
-  padding: 10px 40px;
-  border-radius: 40px;
+#input-message {
+  border: none !important;
+  border-radius: 1vh;
+  margin-left: 2vw;
+  margin-top: 2vh;
   width: 70%;
+  background-color: #F3F3F3 !important;
 }
 
+#input-message::placeholder {
+  color:#BBBBBB !important; 
+  font-style: italic !important;
+}
+
+.arrow {
+  width: 2vw;
+  margin-left: 28vw;
+}
+
+
+/*
 .chat-bubble {
   padding: 10px 14px;
   background: #eee;
@@ -154,29 +157,4 @@ input {
   animation: fadeIn 1s ease-in;
 } */
 
-.chat-page {
-  background: linear-gradient(#e0fff1, #ddefc6);
-}
-
-/* .logo-text-chat {
-  font-family: Gilroy;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 17px;
-  letter-spacing: 0em;
-  text-align: left;
-  float: left;
-  margin: 10px;
-  color: #1c1c1c;
-} */
-
-.logo-text-tray {
-  background: #fafafa;
-  height: 30px;
-  width: 714px;
-  left: 0px;
-  top: 0px;
-  border-radius: 0px;
-}
 </style>
