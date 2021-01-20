@@ -11,12 +11,12 @@
             <b-card-text>
                 <b-form-input 
                 v-model="userId" 
-                size="sm"
                 id="input-name"
                 placeholder="Введите имя">
                 </b-form-input>        
             </b-card-text>
-            <b-button block class="btn-polychat" href="/chat">Начать чат!</b-button>
+
+            <b-button size="lg" block class="btn-polychat" href="/chat">Начать чат!</b-button>
 
             <b-card-text class="mt-2">
               Пользователей онлайн: <h6 class="amount-of-active-users">112</h6> 
@@ -54,6 +54,7 @@ export default {
   }
 
   #input-name{
+    margin-top: 4vh;
     outline: none !important;
     border-width: 0 0 2px;
     border-color: #BBBBBB;
@@ -67,35 +68,32 @@ export default {
     font-style: italic !important;
   }
 
-
   .logo {
     width: 8vw;
   }
 
   .welcome-card {
     margin-top: 2vh;
+    padding: 1vh;
     width: 22vw;
+    height: 30vh;
     filter: drop-shadow(0.5vw 0.5vh 0.5rem rgba(0,0,0, 0.08));
     font-family: "Gilroy";
     font-weight: 200;
-    background-color: gray;
-  }
-
-  .card-body {
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(250, 250, 250) !important;
   }
 
   .welcome-card h4 {
     margin-top: 1vh;
     margin-bottom: 3vh;
-
     font-family: "Gilroy";
     font-weight: 600;
-    font-size: 24px;
     line-height: 30px;
+    font-size: 2rem;
   }
 
   .btn-polychat {
+    margin-top: 4vh;
     background-color: #2ECC71 !important;
     border-color: #2ECC71 !important;
   }
