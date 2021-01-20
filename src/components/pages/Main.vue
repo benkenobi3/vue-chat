@@ -76,7 +76,7 @@ export default {
     margin-top: 2vh;
     padding: 1vh;
     width: 22vw;
-    height: 30vh;
+    height: 35vh;
     filter: drop-shadow(0.5vw 0.5vh 0.5rem rgba(0,0,0, 0.08));
     font-family: "Gilroy";
     font-weight: 200;
