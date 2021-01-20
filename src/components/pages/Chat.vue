@@ -19,7 +19,7 @@
                  <div class="input-wrapper">
                    <form method="post" action="/ОТПРАВИТЬ СООБЩЕНИЕ!!//">
                    <input type="text" placeholder="Напишите сообщение...">
-                   <input class="icon" type="submit" name="send" value=">" >
+                   <input class="icon" type="submit" name="send" value="Отправить" >
                    </form>
                  </div>
                
@@ -45,10 +45,12 @@ body{
     background: linear-gradient(#E0FFF1, #DDEFC6);
   }
 .icon{
-  width:50px;
+  width:150px;
   height:50px;
   border-radius:25px;
   background:#2ECC71;
+  color:#fff;
+  
 }
 .chat{
 height: 628px;
@@ -56,6 +58,7 @@ width: 714px;
 margin-top: 4vh;
 background:#F3F3F3;
 color:#fff;
+
   }
 .chat-box-tray{
  height: 68px;
