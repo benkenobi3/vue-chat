@@ -5,21 +5,20 @@
         <b-col cols="6" class="chat-window" style="padding: 0">
           <b-container fluid no-gutters style="padding: 0">
             <b-row no-gutters class="logo-text-tray">
-              <b-col cols="12">
-                <div no-gutters>
+              <b-col sm="12">
                   <h6 class="logo-text-chat">poly chat</h6>
-                </div>
               </b-col>
             </b-row>
             <b-row>
               <b-col>
                 <b-button>Найти нового собеседника</b-button>
+              </b-col>
+              <b-col>
                 <b-button>Выйти</b-button>
               </b-col>
             </b-row>
           </b-container>
         </b-col>
-
         <b-row class="chat-box-tray">
           <b-col> </b-col>
         </b-row>
@@ -102,11 +101,12 @@ export default {};
 
 .logo-text-tray {
   background: #fafafa;
-  height: 3vh;
   margin: 0px !important;
   border-radius: 0px;
-  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
 }
+
 .new-chat-reset {
   /* тут творится какой-то пиздец */
   height: 5vh;
