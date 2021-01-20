@@ -2,8 +2,8 @@
   <div>
     <b-container fluid class="chat-page" no-gutters>
       <b-row align-v="center" align-h="center" class="vh-100" no-gutters>
-        <b-col cols="6" class="chat-window" style="padding:0;">
-          <b-container fluid no-gutters style="padding:0;">
+        <b-col cols="6" class="chat-window" style="padding: 0">
+          <b-container fluid no-gutters style="padding: 0">
             <b-row no-gutters class="logo-text-tray">
               <b-col cols="12">
                 <div no-gutters>
@@ -18,21 +18,18 @@
               </b-col>
             </b-row>
           </b-container>
-
         </b-col>
 
         <b-row class="chat-box-tray">
-          <b-col>
-
-          </b-col>
+          <b-col> </b-col>
         </b-row>
       </b-row>
     </b-container>
-
   </div>
-      <!-- <b-container fluid class="chat-page vh-100">
+  <!-- <b-container fluid class="chat-page vh-100">
       <div class="row no-gutters">
         <div class="chat mx-auto">
+              
           <div class="logotext-tray">
             <h class="logo-text-chat">poly chat</h>
           </div>
@@ -47,7 +44,7 @@
             <div class="input-wrapper">
               <form method="post" action="/ОТПРАВИТЬ СООБЩЕНИЕ!!//">
                 <input type="text" placeholder="Напишите сообщение..." />
-                <input class="icon" type="submit" name="send" value=">" />
+                <input class="icon" type="submit" name="send" value="Отправить" />
               </form>
             </div>
           </div>
@@ -75,10 +72,18 @@ export default {};
   margin-top: 15vh;
   margin-bottom: 15vh;
   padding: 0;
-  
+
   background: #f3f3f3;
   color: #fff;
   box-shadow: 0vw 0vw 1vh #bbbbbb;
+}
+
+.chat {
+  height: 628px;
+  width: 714px;
+  margin-top: 4vh;
+  background: #f3f3f3;
+  color: #fff;
 }
 
 .chat-box-tray {
@@ -152,14 +157,6 @@ input {
 .chat-page {
   background: linear-gradient(#e0fff1, #ddefc6);
 }
-/* 
-.chat {
-  height: 90vh;
-  width: 75vw;
-  margin-top: 4vh;
-  background: #f3f3f3;
-  color: #fff;
-} */
 
 /* .logo-text-chat {
   font-family: Gilroy;
@@ -182,14 +179,4 @@ input {
   top: 0px;
   border-radius: 0px;
 }
-/* 
-.chat-bubble {
-  padding: 10px 14px;
-  background: #eee;
-  margin: 10px 30px;
-  border-radius: 9px;
-  position: relative;
-  animation: fadeIn 1s ease-in;
-} */
-
 </style>
