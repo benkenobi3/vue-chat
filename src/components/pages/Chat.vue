@@ -9,17 +9,7 @@
                 <h5 class="logo-text-chat">poly chat</h5>
               </b-col>
             </b-row>
-
-            <!-- <b-row>
-              <b-col>
-                <b-button class="new-chat-reset">Найти нового собеседника</b-button>
-              </b-col>
-              <b-col>
-                <b-button class="exit-button">Выйти</b-button>
-              </b-col>
-            </b-row> -->
           </b-container>
-
           <b-container>
             <b-row align-v="center" align-h="center">
               <b-col cols="12" class="chat-box-tray">
@@ -31,7 +21,6 @@
                   >
                   </b-form-input>
                 </div>
-                  <!-- <span @mouseover="changeColor"> <b-img class="arrow" :src="require('../../assets/arrow.svg')"></b-img> </span> -->
               </b-col>
             </b-row>
           </b-container>
@@ -43,9 +32,93 @@
 
 
 <script>
-export default {};
+import { HubConnectionBuilder, HubConnectionState } from "@microsoft/signalr";
+export default {
+  components: {
+    Slide,
+  },
+  data() {
+    return {
+      messageContent: "",
+      dialog: false,
+      name: "",
+      connection: null,
+      users: [{name: "Test User"}],
+      Messages: [{ message: "Hello" }],
+    };
+  },
 
-// <import message from '../custom/message.vue'> </message>
+  methods: {
+    sendMessage() {
+      this.connection.invoke("SendMessage",this.messageContent).catch(function (err) {
+        return console.error(err);
+      });
+    },
+
+    openDialog() {
+      this.dialog = true;
+    },
+
+    joinRoom() {
+      this.dialog = false;
+      this.connection.invoke("JoinRoom",this.name).catch(function (err) {
+        return console.error(err);
+      });
+    },
+
+    listen() {
+      window.console.log("Listen Started");
+
+      if (this.connection.state !== HubConnectionState.Connected) {
+        this.connect().finally(() => {
+          this.listen();
+          return;
+        });
+      }
+
+      this.connection.on("NewConnection", (res) => {
+        console.log(res);
+      });
+
+      this.connection.on("JoinRoom", (res) => {
+        var userObj = {
+          name: res
+        };
+        this.users.push(userObj);
+      });
+
+      this.connection.on("SendMessage",(res) => {
+        var messageObj = {
+          message: res
+        };
+        this.Messages.push(messageObj);
+        console.log(res);
+      })
+    },
+
+  },
+
+  created() {
+    if (this.connection === null) {
+      this.connection = new HubConnectionBuilder()
+        .withUrl("http://localhost:5200/chathub")
+        .build();
+    }
+    this.connection
+      .start()
+      .then(() => {
+        window.console.log("Connection Success");
+        this.listen();
+      })
+      .catch((err) => {
+        window.console.log(`Connection Error ${err}`);
+      });
+
+    this.connection.onclose(() => {
+      window.console.log("Connection Destroy");
+    });
+  },
+};
 </script>
 
 <style>
@@ -123,14 +196,4 @@ export default {};
   margin-left: 28vw;
   margin-top: 0;
 }
-
-/*
-.chat-bubble {
-  padding: 10px 14px;
-  background: #eee;
-  margin: 10px 30px;
-  border-radius: 9px;
-  position: relative;
-  animation: fadeIn 1s ease-in;
-} */
 </style>
