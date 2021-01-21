@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Axios from 'axios'
-// import store from './store'
 import router from './components/element/router.js'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -17,13 +16,7 @@ Vue.prototype.$http = Axios
 
 new Vue({
 
-  // store, может пригодиться
   router,
-  // methods: {
-  //   changeColor (){
-  //     this.blyat="я не понимаю как это писать"
-  //   }
-  // }
 
   render: h => h(App),
 

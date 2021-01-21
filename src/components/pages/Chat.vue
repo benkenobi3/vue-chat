@@ -35,7 +35,7 @@
 import { HubConnectionBuilder, HubConnectionState } from "@microsoft/signalr";
 export default {
   components: {
-    Slide,
+    // Slide,
   },
   data() {
     return {
@@ -101,7 +101,7 @@ export default {
   created() {
     if (this.connection === null) {
       this.connection = new HubConnectionBuilder()
-        .withUrl("http://localhost:5200/chathub")
+        .withUrl("http://localhost:5100/chathub")
         .build();
     }
     this.connection
