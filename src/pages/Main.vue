@@ -10,10 +10,10 @@
 
             <b-card-text>
                 <b-form-input 
-                v-model="userId" 
+                v-model="username" 
                 id="input-name"
                 placeholder="Введите имя">
-                </b-form-input>        
+                </b-form-input>
             </b-card-text>
 
             <b-button size="lg" block class="btn-polychat" href="/chat">Начать чат!</b-button>
@@ -34,8 +34,14 @@
 export default {
     data() {
       return {
-        userId: ''
+        username: ''
       }
+    },
+
+    methods: {
+      to_chat: function() {
+        return ''
+      },
     },
 }
 </script>

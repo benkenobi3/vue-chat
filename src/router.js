@@ -3,8 +3,8 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import Main from '../pages/Main'
-import Chat from '../pages/Chat'
+import Main from './pages/Main'
+import Chat from './pages/Chat'
 
 const routes = [
     {
