@@ -32,11 +32,15 @@
 
 
 <script>
-import { HubConnectionBuilder, HubConnectionState } from "@microsoft/signalr";
+import { HubConnectionState } from "@microsoft/signalr";
+//import { mapGetters, mapActions } from "vuex"
 export default {
+  props: ['username'],
+
   components: {
     // Slide,
   },
+
   data() {
     return {
       messageContent: "",
@@ -99,24 +103,7 @@ export default {
   },
 
   created() {
-    if (this.connection === null) {
-      this.connection = new HubConnectionBuilder()
-        .withUrl("http://localhost:5100/chathub")
-        .build();
-    }
-    this.connection
-      .start()
-      .then(() => {
-        window.console.log("Connection Success");
-        this.listen();
-      })
-      .catch((err) => {
-        window.console.log(`Connection Error ${err}`);
-      });
-
-    this.connection.onclose(() => {
-      window.console.log("Connection Destroy");
-    });
+    this.name = this.username
   },
 };
 </script>

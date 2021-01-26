@@ -1,29 +1,37 @@
 <template>
   <div>
-    <b-container fluid class ="main-page vh-100">
-      <b-row align-v="center" align-h="center" class="vh-100">
+    <b-container fluid class="main-page vh-100">
+      <b-row align-v="end" align-h="center" id="logo-row">
         <b-col md="4">
-          
-          <b-img class="logo" center fluid :src="require('../../assets/Group_34.png')"></b-img>
-
+          <b-img
+            id="logo"
+            center
+            fluid
+            :src="require('../assets/Group_34.png')"
+          ></b-img>
+        </b-col>
+      </b-row>
+      <b-row align-v="center" align-h="center">
+        <b-col md="4">
           <b-card class="welcome-card mx-auto" title="poly chat">
-
             <b-card-text>
-                <b-form-input 
-                v-model="username" 
+              <b-form-input
+                v-model="username"
                 id="input-name"
-                placeholder="Введите имя">
-                </b-form-input>
+                placeholder="Введите имя"
+              >
+              </b-form-input>
             </b-card-text>
 
-            <b-button size="lg" block class="btn-polychat" href="/chat">Начать чат!</b-button>
+            <b-button size="lg" block class="btn-polychat" v-on:click="to_chat"
+              >Начать чат!</b-button
+            >
 
             <b-card-text class="mt-2">
-              Пользователей онлайн: <h6 class="amount-of-active-users">112</h6> 
+              Пользователей онлайн:
+              <h6 class="amount-of-active-users">112</h6>
             </b-card-text>
-
           </b-card>
-
         </b-col>
       </b-row>
     </b-container>
@@ -31,77 +39,106 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
-    data() {
-      return {
-        username: ''
+  data() {
+    return {
+      username: "",
+    };
+  },
+
+  computed: mapGetters(["getConnection"]),
+
+  methods: {
+    to_chat: function () {
+      if (this.username != "") {
+        this.$router.push({ name: "Чат", params: { username: this.username } });
       }
     },
+    ...mapActions(["createConnection"]),
+  },
 
-    methods: {
-      to_chat: function() {
-        return ''
-      },
-    },
-}
+  created() {
+    if (this.getConnection === null) {
+      this.createConnection();
+    }
+
+    this.getConnection
+      .start()
+      .then(() => {
+        window.console.log("Connection Success");
+        //this.listen();
+      })
+      .catch((err) => {
+        window.console.log(`Connection Error ${err}`);
+      });
+
+    this.getConnection.onclose(() => {
+      window.console.log("Connection Destroy");
+    });
+  },
+};
 </script>
 
 <style>
+.main-page {
+  background: linear-gradient(#e0fff1, #ddefc6);
+}
 
-  .main-page {
-    background: linear-gradient(#E0FFF1, #DDEFC6);
-  }
+.amount-of-active-users {
+  color: #2ecc71;
+  font-family: "Gilroy";
+  font-weight: 200;
+  display: inline;
+}
 
-  .amount-of-active-users {
-    color: #2ECC71;
-    font-family: "Gilroy";
-    font-weight: 200;
-    display: inline;
-  }
+#input-name {
+  margin-top: 4vh;
+  outline: none !important;
+  border-width: 0 0 2px;
+  border-color: #bbbbbb;
+  box-shadow: none;
+  border-radius: 0;
+  background-color: rgb(250, 250, 250);
+}
 
-  #input-name{
-    margin-top: 4vh;
-    outline: none !important;
-    border-width: 0 0 2px;
-    border-color: #BBBBBB;
-    box-shadow: none;
-    border-radius: 0;
-    background-color: rgb(250, 250, 250);
-  }
+#input-name::placeholder {
+  color: #bbbbbb !important;
+  font-style: italic !important;
+}
 
-  #input-name::placeholder {
-    color:#BBBBBB !important; 
-    font-style: italic !important;
-  }
+#logo {
+  width: 8vw;
+}
 
-  .logo {
-    width: 8vw;
-  }
+#logo-row {
+  height: 18vw;
+}
 
-  .welcome-card {
-    margin-top: 2vh;
-    padding: 1vh;
-    width: 22vw;
-    height: 35vh;
-    filter: drop-shadow(0.5vw 0.5vh 0.5rem rgba(0,0,0, 0.08));
-    font-family: "Gilroy";
-    font-weight: 200;
-    background-color: rgb(250, 250, 250) !important;
-  }
+.welcome-card {
+  margin-top: 2vh;
+  padding: 1vh;
+  width: 22vw;
+  height: 35vh;
+  filter: drop-shadow(0.5vw 0.5vh 0.5rem rgba(0, 0, 0, 0.08));
+  font-family: "Gilroy";
+  font-weight: 200;
+  background-color: rgb(250, 250, 250) !important;
+}
 
-  .welcome-card h4 {
-    margin-top: 1vh;
-    margin-bottom: 3vh;
-    font-family: "Gilroy";
-    font-weight: 600;
-    line-height: 30px;
-    font-size: 2rem;
-  }
+.welcome-card h4 {
+  margin-top: 1vh;
+  margin-bottom: 3vh;
+  font-family: "Gilroy";
+  font-weight: 600;
+  line-height: 30px;
+  font-size: 2rem;
+}
 
-  .btn-polychat {
-    margin-top: 4vh;
-    background-color: #2ECC71 !important;
-    border-color: #2ECC71 !important;
-  }
-
+.btn-polychat {
+  margin-top: 4vh;
+  background-color: #2ecc71 !important;
+  border-color: #2ecc71 !important;
+}
 </style>
