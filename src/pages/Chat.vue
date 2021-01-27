@@ -17,9 +17,9 @@
                     placeholder="Напишите сообщение..."
                     class="inline">
                   </b-form-input>
-                  <a id="new-message">
-                    <img src="../assets/arrow.svg" alt="" width="40px" height="40px">
-                  </a>
+                  <b-button pill id="new-message" v-on:click="sendMessage">
+                    <img src="../assets/arrow.svg" alt="" width="40px" height="40px">   
+                  </b-button>
               </b-col>
             </b-row>
           </b-container>
@@ -149,6 +149,8 @@ export default {
   padding: 0;
   display: inline;
   background: none;
+  border: none !important;
+  outline: none !important;
 }
 
 #input-message {
