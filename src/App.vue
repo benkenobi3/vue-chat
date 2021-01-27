@@ -23,6 +23,9 @@ export default {
     height: 100vh;
   }
 
+  .inline {
+    display: inline !important;
+  }
 
   @font-face {
     font-family: "Gilroy";

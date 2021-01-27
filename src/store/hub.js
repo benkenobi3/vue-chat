@@ -18,6 +18,15 @@ export default {
 
       ctx.commit('updateConnection', connection)
     },
+
+    joinRoom(ctx, userObj) {
+      ctx.commit('updateUsers', userObj)
+    },
+
+    newMessage(ctx, messageObj) {
+      ctx.commit('updateMessages', messageObj)
+    },
+
     cleanUp(ctx) {
       ctx.commit('cleanUp')
     }
@@ -27,8 +36,15 @@ export default {
     updateConnection(state, connection) {
       state.connection = connection
     },
+    updateUsers(state, userObj) {
+      state.chat.users.push(userObj)
+    },
+    updateMessages(state, messageObj) {
+      state.chat.messages.push(messageObj)
+    },
     cleanUp(state) {
       state.connection = null
+      state.chat = null
     }
   },
 

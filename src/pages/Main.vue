@@ -18,14 +18,11 @@
               <b-form-input
                 v-model="username"
                 id="input-name"
-                placeholder="Введите имя"
-              >
+                placeholder="Введите имя">
               </b-form-input>
             </b-card-text>
 
-            <b-button size="lg" block class="btn-polychat" v-on:click="to_chat"
-              >Начать чат!</b-button
-            >
+            <b-button size="lg" block class="btn-polychat" v-on:click="to_chat">Начать чат!</b-button>
 
             <b-card-text class="mt-2">
               Пользователей онлайн:
@@ -51,8 +48,15 @@ export default {
   computed: mapGetters(["getConnection"]),
 
   methods: {
+    joinRoom() {
+      this.getConnection.invoke("JoinRoom", this.username).catch(function (err) {
+        return console.error(err);
+      });
+    },
+
     to_chat: function () {
       if (this.username != "") {
+        this.joinRoom()
         this.$router.push({ name: "Чат", params: { username: this.username } });
       }
     },
@@ -68,7 +72,6 @@ export default {
       .start()
       .then(() => {
         window.console.log("Connection Success");
-        //this.listen();
       })
       .catch((err) => {
         window.console.log(`Connection Error ${err}`);
@@ -120,7 +123,7 @@ export default {
   margin-top: 2vh;
   padding: 1vh;
   width: 22vw;
-  height: 35vh;
+  height: 100%;
   filter: drop-shadow(0.5vw 0.5vh 0.5rem rgba(0, 0, 0, 0.08));
   font-family: "Gilroy";
   font-weight: 200;

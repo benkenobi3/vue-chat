@@ -9,18 +9,17 @@
                 <h5 class="logo-text-chat">poly chat</h5>
               </b-col>
             </b-row>
-          </b-container>
-          <b-container>
-            <b-row align-v="center" align-h="center">
+            <b-row no-gutters align-v="center" align-h="center">
               <b-col cols="12" class="chat-box-tray">
-                <div>
                   <b-form-input
                     v-model="text"
                     id="input-message"
                     placeholder="Напишите сообщение..."
-                  >
+                    class="inline">
                   </b-form-input>
-                </div>
+                  <a id="new-message">
+                    <img src="../assets/arrow.svg" alt="" width="40px" height="40px">
+                  </a>
               </b-col>
             </b-row>
           </b-container>
@@ -33,7 +32,7 @@
 
 <script>
 import { HubConnectionState } from "@microsoft/signalr";
-//import { mapGetters, mapActions } from "vuex"
+import { mapGetters, mapActions } from "vuex"
 export default {
   props: ['username'],
 
@@ -44,28 +43,16 @@ export default {
   data() {
     return {
       messageContent: "",
-      dialog: false,
-      name: "",
-      connection: null,
-      users: [{name: "Test User"}],
-      Messages: [{ message: "Hello" }],
     };
   },
 
+  computed: mapGetters(["getConnection", "getChatUsers", "getChatMessages"]),
+
   methods: {
+    ...mapActions(["joinRoom", "newMessage"]),
+
     sendMessage() {
-      this.connection.invoke("SendMessage",this.messageContent).catch(function (err) {
-        return console.error(err);
-      });
-    },
-
-    openDialog() {
-      this.dialog = true;
-    },
-
-    joinRoom() {
-      this.dialog = false;
-      this.connection.invoke("JoinRoom",this.name).catch(function (err) {
+      this.getConnection.invoke("SendMessage", this.messageContent).catch(function (err) {
         return console.error(err);
       });
     },
@@ -73,30 +60,29 @@ export default {
     listen() {
       window.console.log("Listen Started");
 
-      if (this.connection.state !== HubConnectionState.Connected) {
-        this.connect().finally(() => {
+      if (this.getConnection.state !== HubConnectionState.Connected) {
+        this.getConnection.connect().finally(() => {
           this.listen();
           return;
         });
       }
 
-      this.connection.on("NewConnection", (res) => {
+      this.getConnection.on("NewConnection", (res) => {
         console.log(res);
       });
 
-      this.connection.on("JoinRoom", (res) => {
+      this.getConnection.on("JoinRoom", (res) => {
         var userObj = {
           name: res
         };
-        this.users.push(userObj);
+        this.joinRoom(userObj)
       });
 
-      this.connection.on("SendMessage",(res) => {
+      this.getConnection.on("SendMessage", (res) => {
         var messageObj = {
           message: res
         };
-        this.Messages.push(messageObj);
-        console.log(res);
+        this.newMessage(messageObj)
       })
     },
 
@@ -104,6 +90,7 @@ export default {
 
   created() {
     this.name = this.username
+    this.listen()
   },
 };
 </script>
@@ -155,6 +142,13 @@ export default {
   min-width: 100%;
   max-width: 100%;
   border-radius: 1vh;
+}
+
+#new-message {
+  margin-left: 25px;
+  padding: 0;
+  display: inline;
+  background: none;
 }
 
 #input-message {
