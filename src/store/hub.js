@@ -13,7 +13,7 @@ export default {
     // },
     createConnection(ctx) {
       let connection = new HubConnectionBuilder()
-      .withUrl("http://localhost:5100/chathub")
+      .withUrl("http://93.94.147.139:5100/chathub")
       .build();
 
       ctx.commit('updateConnection', connection)

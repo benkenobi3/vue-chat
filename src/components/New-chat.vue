@@ -19,7 +19,6 @@ export default {
 <style>
 
 .new-chat-reset {
-  /* тут творится какой-то пиздец */
   height: 5vh;
   width: 20vw;
   margin-top: 40vh;

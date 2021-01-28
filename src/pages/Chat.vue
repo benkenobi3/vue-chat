@@ -9,25 +9,22 @@
                 <h5 class="logo-text-chat">poly chat</h5>
               </b-col>
             </b-row>
-            <b-row>
+            <b-row no-gutters id="chat" ref="chat">
               <b-col cols="12">
-                <ul id="messages">
-                  <li v-for="messageObj in getChatMessages" :key="messageObj.timestamp">
-                    {{ messageObj.message }}
-                  </li>
-                </ul>
+                <Message v-for="messageObj in getChatMessages" :key="messageObj.timestamp" :message="messageObj"></Message>
               </b-col>
             </b-row>
             <b-row no-gutters align-v="center" align-h="center">
               <b-col cols="12" class="chat-box-tray">
+                <img src="../assets/paper-clip.svg" alt="" width="24vw" height="24vh">
                   <b-form-input
                     v-model="messageContent"
                     id="input-message"
                     placeholder="Напишите сообщение..."
                     class="inline">
                   </b-form-input>
-                  <b-button pill id="new-message" v-on:click="sendMessage">
-                    <img src="../assets/arrow.svg" alt="" width="40px" height="40px">   
+                  <b-button  id="new-message" v-on:click="sendMessage">
+                    <img src="../assets/arrow.svg" alt="" width="24vw" height="24vh">   
                   </b-button>
               </b-col>
             </b-row>
@@ -42,11 +39,12 @@
 <script>
 import { HubConnectionState } from "@microsoft/signalr";
 import { mapGetters, mapActions } from "vuex"
+import Message from '../components/Message.vue';
 export default {
   props: ['username'],
 
   components: {
-    // Slide,
+    Message
   },
 
   data() {
@@ -61,9 +59,15 @@ export default {
     ...mapActions(["joinRoom", "newMessage", "cleanUp"]),
 
     sendMessage() {
-      this.getConnection.invoke("SendMessage", this.messageContent).catch(function (err) {
+      var messageObj = {
+          timestamp: new Date().valueOf(),
+          username: this.username,
+          message: this.messageContent
+        };
+      this.getConnection.invoke("SendMessage", JSON.stringify(messageObj)).catch(function (err) {
         return console.error(err);
       });
+      this.messageContent = "";
     },
 
     listen() {
@@ -88,11 +92,8 @@ export default {
       });
 
       this.getConnection.on("SendMessage", (res) => {
-        var messageObj = {
-          timestamp: new Date().valueOf(),
-          message: res
-        };
-        this.newMessage(messageObj)
+        this.$refs.chat.scrollTop=this.$refs.chat.scrollHeight
+        this.newMessage(JSON.parse(res))
       })
     },
 
@@ -125,19 +126,17 @@ export default {
   box-shadow: 0vw 0vw 1vh #bbbbbb;
 }
 
-.chat {
-  height: 628px;
-  width: 714px;
-  margin-top: 4vh;
-  background: #f3f3f3;
-  color: #fff;
-}
+#chat {
+  overflow-y: scroll;
+  height: 58vh;
+  scroll-behavior: smooth;
+} 
 
 .chat-box-tray {
-  height: 10vh;
-  margin-top: 56vh;
+  height: 100%;
   background: #fafafa;
   border-radius: 1vh;
+  align-content: center !important;
 }
 
 .logo-text-chat {
@@ -174,7 +173,7 @@ export default {
   margin-top: 2vh;
   width: 70%;
   background-color: #f3f3f3 !important;
-  outline: none !important;
+  outline: 0 !important;
   border-width: 0 0 2px;
   border-color: #bbbbbb;
   box-shadow: none;
@@ -188,9 +187,4 @@ export default {
   font-weight: 200;
 }
 
-.arrow {
-  width: 2vw;
-  margin-left: 28vw;
-  margin-top: 0;
-}
 </style>
