@@ -5,14 +5,23 @@
         <b-col cols="6" class="chat-window" style="padding: 0">
           <b-container fluid no-gutters style="padding: 0">
             <b-row no-gutters class="logo-text-tray">
-              <b-col sm="12">
+              <b-col cols="12">
                 <h5 class="logo-text-chat">poly chat</h5>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col cols="12">
+                <ul id="messages">
+                  <li v-for="messageObj in getChatMessages" :key="messageObj.timestamp">
+                    {{ messageObj.message }}
+                  </li>
+                </ul>
               </b-col>
             </b-row>
             <b-row no-gutters align-v="center" align-h="center">
               <b-col cols="12" class="chat-box-tray">
                   <b-form-input
-                    v-model="text"
+                    v-model="messageContent"
                     id="input-message"
                     placeholder="Напишите сообщение..."
                     class="inline">
@@ -49,7 +58,7 @@ export default {
   computed: mapGetters(["getConnection", "getChatUsers", "getChatMessages"]),
 
   methods: {
-    ...mapActions(["joinRoom", "newMessage"]),
+    ...mapActions(["joinRoom", "newMessage", "cleanUp"]),
 
     sendMessage() {
       this.getConnection.invoke("SendMessage", this.messageContent).catch(function (err) {
@@ -80,6 +89,7 @@ export default {
 
       this.getConnection.on("SendMessage", (res) => {
         var messageObj = {
+          timestamp: new Date().valueOf(),
           message: res
         };
         this.newMessage(messageObj)
@@ -92,6 +102,10 @@ export default {
     this.name = this.username
     this.listen()
   },
+
+  beforeDestroy() {
+    this.cleanUp()
+  }
 };
 </script>
 
