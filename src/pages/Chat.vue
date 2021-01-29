@@ -14,18 +14,22 @@
                 <Message v-for="messageObj in getChatMessages" :key="messageObj.timestamp" :message="messageObj"></Message>
               </b-col>
             </b-row>
-            <b-row no-gutters align-v="center" align-h="center">
-              <b-col cols="12" class="chat-box-tray">
+            <b-row no-gutters align-v="center" align-h="center" class="chat-tray">
+              <b-col cols="1" md="3">
                 <img src="../assets/paper-clip.svg" alt="" width="24vw" height="24vh">
-                  <b-form-input
-                    v-model="messageContent"
-                    id="input-message"
-                    placeholder="Напишите сообщение..."
-                    class="inline">
-                  </b-form-input>
-                  <b-button  id="new-message" v-on:click="sendMessage">
-                    <img src="../assets/arrow.svg" alt="" width="24vw" height="24vh">   
-                  </b-button>
+              </b-col>
+              <b-col cols="8" md="6">
+                <b-form-input
+                  @keyup.enter="sendMessage"
+                  v-model="messageContent"
+                  id="input-message"
+                  placeholder="Напишите сообщение...">
+                </b-form-input>
+              </b-col>
+              <b-col cols="3" md="3" >
+                <b-button  id="new-message" v-on:click="sendMessage">
+                  <img src="../assets/arrow.svg" alt="" width="24vw" height="24vh">   
+                </b-button>
               </b-col>
             </b-row>
           </b-container>
@@ -132,8 +136,10 @@ export default {
   scroll-behavior: smooth;
 } 
 
-.chat-box-tray {
+.chat-tray {
   height: 100%;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
   background: #fafafa;
   border-radius: 1vh;
   align-content: center !important;
@@ -169,9 +175,7 @@ export default {
 #input-message {
   border: none !important;
   border-radius: 1vh;
-  margin-left: 2vw;
-  margin-top: 2vh;
-  width: 70%;
+  width: 100%;
   background-color: #f3f3f3 !important;
   outline: 0 !important;
   border-width: 0 0 2px;
