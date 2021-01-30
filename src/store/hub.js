@@ -3,14 +3,6 @@ import { HubConnectionBuilder} from "@microsoft/signalr"
 export default {
 
   actions: {
-    // async fetchLibrary(ctx) {
-    //     const res = await fetch(
-    //         "https://musicsear4.herokuapp.com/api/v1/search/album/all/?limit=50"
-    //     )
-    //     const albums = await res.json()
-
-    //     ctx.commit('updateLibrary', albums.results)
-    // },
     createConnection(ctx) {
       let connection = new HubConnectionBuilder()
       .withUrl("http://93.94.147.139:5100/chathub")

@@ -62,6 +62,12 @@ export default {
   methods: {
     ...mapActions(["joinRoom", "newMessage", "cleanUp"]),
 
+    fetchMessages() {
+      this.getConnection.invoke("FetchMessages").catch(function (err) {
+        return console.error(err);
+      });
+    },
+
     sendMessage() {
       var messageObj = {
           timestamp: new Date().valueOf(),
@@ -81,23 +87,34 @@ export default {
         this.getConnection.connect().finally(() => {
           this.listen();
           return;
-        });
+        })
       }
 
       this.getConnection.on("NewConnection", (res) => {
         console.log(res);
-      });
+      })
 
       this.getConnection.on("JoinRoom", (res) => {
         var userObj = {
           name: res
         };
         this.joinRoom(userObj)
-      });
+      })
 
       this.getConnection.on("SendMessage", (res) => {
         this.$refs.chat.scrollTop=this.$refs.chat.scrollHeight
         this.newMessage(JSON.parse(res))
+      })
+
+      this.getConnection.on("FetchMessages", (messages) => {
+        var drtMessages = JSON.parse(messages)
+        window.console.log(drtMessages)
+        for (let i in drtMessages) 
+        {
+          drtMessages[i].replace("/", "")
+          this.newMessage(JSON.parse(drtMessages[i]))
+          window.console.log(drtMessages[i])
+        }
       })
     },
 
@@ -106,6 +123,7 @@ export default {
   created() {
     this.name = this.username
     this.listen()
+    this.fetchMessages()
   },
 
   beforeDestroy() {
